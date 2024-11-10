@@ -1,4 +1,5 @@
 import check from './bot/commands/check'
+import startNewCycle from './bot/commands/new'
 
 function menu() {
     console.log('\nSimple Trading Bot v2 \n');
@@ -17,7 +18,7 @@ switch (lastArg) {
         break;
     case '-n':
     case '--new':
-        console.log('New');
+        await startNewCycle()
         break;
     case '-u':
     case '--update':
