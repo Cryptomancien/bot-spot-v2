@@ -1,3 +1,5 @@
+import check from './bot/commands/check'
+
 function menu() {
     console.log('\nSimple Trading Bot v2 \n');
     console.log('--check      -c    Check config \n');
@@ -11,7 +13,7 @@ const lastArg = Bun.argv.at(-1)
 switch (lastArg) {
     case '-c':
     case '--check':
-        console.log('Check');
+        await check();
         break;
     case '-n':
     case '--new':
