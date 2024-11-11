@@ -44,7 +44,6 @@ export async function checkDB() {
         // If the column doesn't exist, add it to the table
         if (!columnExists) {
             db.exec(`ALTER TABLE ${tableName} ADD COLUMN ${columnName} ${columnDefinition}`);
-            console.log(`Column "${columnName}" added to table "${tableName}".`);
         }
     }
 
