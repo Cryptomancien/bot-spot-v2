@@ -3,6 +3,7 @@
   "module": "main.ts",
   "devDependencies": {
     "@types/bun": "^1.1.13",
+    "chokidar": "^4.0.1",
     "drizzle-kit": "^0.28.0"
   },
   "peerDependencies": {
@@ -10,6 +11,10 @@
   },
   "type": "module",
   "dependencies": {
-    "mongodb": "^6.10.0"
+    "@types/express": "^5.0.0",
+    "@types/nunjucks": "^3.2.6",
+    "express": "^4.21.1",
+    "mongodb": "^6.10.0",
+    "nunjucks": "^3.2.4"
   }
 }

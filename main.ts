@@ -1,5 +1,6 @@
-import check from './bot/commands/check'
-import startNewCycle from './bot/commands/new'
+import check from './bot/commands/check';
+import server from './bot/commands/server'
+import startNewCycle from './bot/commands/new';
 
 function menu() {
     console.log('\nSimple Trading Bot v2 \n');
@@ -9,7 +10,7 @@ function menu() {
     console.log('--server     -s    Run server \n');
 }
 
-const lastArg = Bun.argv.at(-1)
+const lastArg = Bun.argv.at(-1);
 
 switch (lastArg) {
     case '-c':
@@ -26,7 +27,7 @@ switch (lastArg) {
         break;
     case '-s':
     case '--server':
-        console.log('Server');
+        server()
         break;
     default:
         menu();
