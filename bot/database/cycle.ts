@@ -16,9 +16,9 @@ export async function startCycle(cycle: CycleType) {
     VALUES (
         '${Status.ORDER_BUY_PLACED}', 
         '${cycle.quantity}',
-        '${cycle.order_buy_target}',
+        '${cycle.order_buy_price}',
         '${cycle.order_buy_id}',
-        '${cycle.order_sell_target}'
+        '${cycle.order_sell_price}'
     )`;
 
     db.prepare(query).run();
