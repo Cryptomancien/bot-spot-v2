@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import {styleText} from 'node:util';
 import {Database} from 'bun:sqlite';
 import * as Exchange from '../../exchange';
+import db from '../../services/db'
 
 export async function checkDotenv() {
     const dotenvFileExists = await fs.exists('.env');
@@ -30,8 +31,6 @@ export async function checkKeys() {
 
 
 export async function checkDB() {
-    const db = new Database('storage/db.sqlite', {create: true});
-
     function addColumnIfNotExists(tableName: string, columnName: string, columnDefinition: string) {
         // Retrieve the list of columns in the specified table
         const stmt = db.prepare(`PRAGMA table_info(${tableName})`);

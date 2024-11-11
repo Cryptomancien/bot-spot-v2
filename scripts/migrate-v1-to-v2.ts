@@ -1,9 +1,5 @@
 import {MongoClient} from 'mongodb';
-import {Database} from 'bun:sqlite';
-
-
-const db = new Database('storage/db.sqlite', {create: true});
-
+import db from '../bot/services/db'
 
 // mongodb connection
 const uri = 'mongodb://localhost:27017';

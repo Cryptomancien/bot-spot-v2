@@ -6,7 +6,7 @@ export default async function () {
     await checkDotenv();
     await checkKeys();
     await checkDB();
-    await checkBalanceUSDT()
+    await checkBalanceUSDT();
 
     console.log(styleText('green', "\nEverything look's like good \nYou can run a new cycle or update not completed ones"));
 }
