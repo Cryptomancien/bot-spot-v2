@@ -51,9 +51,9 @@ export async function checkDB() {
 
     addColumnIfNotExists('cycles', 'status', 'VARCHAR(50)');
     addColumnIfNotExists('cycles', 'quantity', 'REAL');
-    addColumnIfNotExists('cycles', 'order_buy_target', 'REAL');
+    addColumnIfNotExists('cycles', 'order_buy_price', 'REAL');
     addColumnIfNotExists('cycles', 'order_buy_id', 'VARCHAR(50)');
-    addColumnIfNotExists('cycles', 'order_sell_target', 'REAL');
+    addColumnIfNotExists('cycles', 'order_sell_price', 'REAL');
     addColumnIfNotExists('cycles', 'order_sell_id', 'VARCHAR(50)');
 
     console.log(styleText('green', '✅  database ok'));
