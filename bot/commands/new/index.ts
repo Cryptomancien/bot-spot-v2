@@ -1,6 +1,7 @@
-import { styleText } from 'node:util';
-import * as Exchange from '../../exchange';
+import * as Exchange from '../../services/exchange';
 import {getAmountPlayable} from './_utils.ts';
+import * as Cycle from '../../database/cycle'
+
 
 export default async function () {
     const lastPrice = (await Exchange.getLastPrice()).lastPriceNumber;
@@ -20,8 +21,9 @@ export default async function () {
     console.log(`ℹ️ Price input = ${priceInput}`);
     console.log(`ℹ️ Price output = ${priceOutput}`);
 
-    const amountPlayable = await getAmountPlayable();
-    console.log(`ℹ️ Amount playable = ${amountPlayable}`)
+    const amountPlayableUSDT = await getAmountPlayable();
+    console.log(`ℹ️ Amount playable = ${amountPlayableUSDT}`)
+
 
 
 }

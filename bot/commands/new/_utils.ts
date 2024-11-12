@@ -1,4 +1,4 @@
-import * as Exchange from '../../exchange';
+import * as Exchange from '../../services/exchange';
 
 type Asset = {
     asset: string;

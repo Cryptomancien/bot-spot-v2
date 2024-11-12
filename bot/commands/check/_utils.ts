@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import {styleText} from 'node:util';
 import {Database} from 'bun:sqlite';
-import * as Exchange from '../../exchange';
+import * as Exchange from '../../services/exchange';
 import db from '../../services/db'
 
 export async function checkDotenv() {
