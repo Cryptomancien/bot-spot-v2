@@ -1,5 +1,6 @@
 export enum Status {
     ORDER_BUY_PLACED = 'order_buy_placed',
+    ORDER_BUY_FILLED = 'order_buy_filled',
     ORDER_SELL_PLACED = 'order_sell_placed',
     COMPLETED = 'completed'
 }
@@ -16,8 +17,10 @@ export type CycleType = {
 
 
 export type OrderType = {
+    id?: string;
     symbol: 'BTC_USDT';
     side: 'buy' | 'sell';
     price: string;
     quantity: string;
+    isActive?: boolean
 }

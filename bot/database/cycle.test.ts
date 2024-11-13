@@ -18,10 +18,19 @@ test.skip('update cycle status', () => {
 
 test.skip('list all uncompleted cycles', () => {
     const cycles = Cycle.listUncompleted();
-    console.log(cycles)
+    console.log(cycles);
 });
 
-test('list all completed cycles', () => {
+test.skip('list all completed cycles', () => {
     const cycles = Cycle.listCompleted();
-    console.log(cycles)
+    console.log(cycles);
+});
+
+test('update cycle price', () => {
+    const id = 167;
+    const newPrice = 91091.42
+    Cycle.updateOrderSellPrice(id, newPrice)
+
+    const cycle = Cycle.getById(id);
+    console.log(cycle);
 });

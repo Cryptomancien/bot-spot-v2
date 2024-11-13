@@ -47,3 +47,15 @@ export async function createOrder(order: OrderType) {
         return Error( (error as Error).message);
     }
 }
+
+export async function getOrder(orderId: string) {
+    try {
+        const url = `${baseURL}/${'get order'.replaceAll(' ', '')}/${orderId}`;
+        const response = await fetch(url, {
+            headers
+        });
+        return await response.json();
+    } catch (error) {
+        return Error( (error as Error).message);
+    }
+}

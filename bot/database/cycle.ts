@@ -38,12 +38,14 @@ export function updateStatus(id: number, status: Status) {
     db.prepare(query).run();
 }
 
-export async function updateTargetSell(id: number, price: number): Promise<void> {
-
+export function updateOrderSellPrice(id: number, price: number) {
+    const query = `UPDATE cycles SET order_sell_price = ${price} WHERE id = '${id}'`;
+    db.prepare(query).run();
 }
 
-export async function updateOrderSellId(id: number, idOrderSell: string): Promise<void> {
-
+export function updateOrderSellId(id: number, orderSellId: string) {
+    const query = `UPDATE cycles SET order_sell_id = '${orderSellId}' WHERE id = '${id}'`;
+    db.prepare(query).run();
 }
 
 export function list() {
