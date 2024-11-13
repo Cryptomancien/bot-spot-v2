@@ -13,5 +13,5 @@ export async function getAmountPlayable() {
     let percent = String(process.env.PERCENT_AVAILABLE) as unknown as number;
     percent = parseInt(String(percent));
 
-    return ((percent * available) / 100).toFixed(2)
+    return ((percent * available) / 100).toFixed(2);
 }

@@ -1,9 +1,11 @@
 import type {CycleType} from '../types';
 import {Status} from '../types'
-import {Database} from 'bun:sqlite';
 import db from '../services/db'
 
-export async function startCycle(cycle: CycleType) {
+export function insert(cycle: CycleType) {
+
+    const {quantity, order_buy_price, order_buy_id, order_sell_price} = cycle
+
     const query =
     `INSERT INTO cycles 
     (
@@ -11,18 +13,19 @@ export async function startCycle(cycle: CycleType) {
         quantity,
         order_buy_price,
         order_buy_id,
-        order_sell_price
+        order_sell_price,
+        order_sell_id
     ) 
     VALUES (
         '${Status.ORDER_BUY_PLACED}', 
-        '${cycle.quantity}',
-        '${cycle.order_buy_price}',
-        '${cycle.order_buy_id}',
-        '${cycle.order_sell_price}'
-    )`;
+        '${quantity}',
+        '${order_buy_price}',
+        '${order_buy_id}',
+        '${order_sell_price}',
+        ''
+        ) RETURNING id`;
 
-    db.prepare(query).run();
-
+    return db.prepare(query).get();
 }
 
 export function getById(id: number) {

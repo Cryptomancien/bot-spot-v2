@@ -2,7 +2,8 @@ import type {OrderType} from '../types.ts'
 
 const baseURL = 'https://api.xeggex.com/api/v2';
 const headers = {
-    'Authorization': 'Basic ' + Buffer.from(process.env.API_PUBLIC + ":" + process.env.API_SECRET).toString('base64')
+    'Authorization': 'Basic ' + Buffer.from(process.env.API_PUBLIC + ":" + process.env.API_SECRET).toString('base64'),
+    'Content-Type': 'application/json'
 };
 
 
