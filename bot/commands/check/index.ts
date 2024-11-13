@@ -9,4 +9,5 @@ export default async function () {
     await checkBalanceUSDT()
 
     console.log(styleText('green', "\nEverything look's like good \nYou can run a new cycle or update not completed ones"));
+    process.exit();
 }
