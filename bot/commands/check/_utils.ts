@@ -104,6 +104,4 @@ export async function checkUpdateAvailable() {
     } else {
         console.log(styleText('green', '✅  Project updated'));
     }
-
-    console.log(Bun)
 }
