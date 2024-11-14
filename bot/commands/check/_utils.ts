@@ -80,3 +80,30 @@ export async function checkBalanceUSDT() {
 
     console.log(styleText('green', '✅  USDT wallet ok'));
 }
+
+export async function checkUpdateAvailable() {
+    const {default: project} = await import('../../../package.json', {
+        assert: {
+            type: 'json'
+        }
+    });
+
+    let localVersion = parseFloat(project.version);
+
+    const url = 'https://raw.githubusercontent.com/Cryptomancien/bot-spot-v2/refs/heads/master/package.json';
+
+    const response = await fetch(url);
+    const json = await response.json();
+
+    const onlineVersion = parseFloat(json.version)
+
+    if (onlineVersion > localVersion) {
+        console.log(styleText('cyan', '\nUpdate available'));
+        console.log('git pull');
+        console.log('bun update')
+    } else {
+        console.log(styleText('green', '✅  Project updated'));
+    }
+
+    console.log(Bun)
+}
