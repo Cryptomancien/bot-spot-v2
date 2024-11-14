@@ -1,5 +1,6 @@
 {
   "name": "simple-trading-bot-v2",
+  "version": "1.01",
   "module": "main.ts",
   "devDependencies": {
     "@types/bun": "^1.1.13",
