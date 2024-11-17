@@ -31,18 +31,52 @@ cp .env.example .env
 ## Launch
 
 ``` bash
-# Menu
 bun run main.ts
-
-# Check requirement
-bun run main.ts -c
-
-# Start new cycle
-bun run main.ts -n
-
-# Update running cycles
-bun run main.ts -u
-
-# Start local server, port 8080
-bun run main.ts -s
 ```
+
+A menu will appear
+```
+Simple Trading Bot v2
+--check      -c    Check config
+--new        -n    Start new cycle
+--update     -n    Update running cycles
+--server     -s    Run server
+```
+
+Then check the setup.
+``` bash
+bun run main.ts -c
+```
+```
+✅  .env ok
+✅  API_PUBLIC ok
+✅  API_SECRET ok
+✅  database ok
+✅  keys ok
+✅  USDT wallet ok
+✅  Project updated
+
+Everything look's like good
+You can run a new cycle or update not completed ones
+```
+
+Once it's done, you have 2 commands to run every day (or every week or what ever)
+``` bash
+bun run main.ts -n
+```
+
+Once it's done, you can update uncompleted ones.
+``` bash
+bun run main.ts -u
+```
+
+```
+Buy order xxx still active
+Buy order xxx still active
+Buy order xxx still active
+Buy order xxx still active
+Buy order xxx still active
+Buy order xxx still active
+```
+
+Enjoy

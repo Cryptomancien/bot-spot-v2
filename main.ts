@@ -9,6 +9,7 @@ function menu() {
     console.log('--new        -n    Start new cycle \n');
     console.log('--update     -n    Update running cycles \n');
     console.log('--server     -s    Run server \n');
+    process.exit();
 }
 
 const lastArg = Bun.argv.at(-1);
