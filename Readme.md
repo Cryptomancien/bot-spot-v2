@@ -1,4 +1,4 @@
-# Simple Trading Bot
+# Simple Trading Bot V2
 
 ![alt text](https://pbs.twimg.com/media/GYvhSB1WcAA1Z61?format=png&name=medium "Title")
 
@@ -15,7 +15,7 @@
 
 ``` bash
 git clone https://github.com/Cryptomancien/bot-spot-v2.git
-cd bot-spot-v2.git
+cd bot-spot-v2
 bun install
 cp .env.example .env
 ```
