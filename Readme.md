@@ -5,7 +5,7 @@
 ## Required
 
 <ul>
-    <li><a href="[https://git-scm.com]" target="_blank">Git</a></li>
+    <li><a href="https://git-scm.com" target="_blank">Git</a></li>
     <li><a href="https://bun.sh]" target="_blank">Bun</a></li>
     <li><a href="https://code.visualstudio.com" target="_blank">VSC</a></li>
     <li><a href="https://cmder.app" target="_blank">Cmder</a> if you use Windows</li>
