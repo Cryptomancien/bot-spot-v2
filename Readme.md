@@ -79,4 +79,9 @@ Buy order xxx still active
 Buy order xxx still active
 ```
 
+If you used the v1, do this:
+``` bash
+bun run scripts/migrate-v1-to-v2.ts
+```
+
 Enjoy
