@@ -14,8 +14,8 @@
 ## Install
 
 ``` bash
-git clone https://github.com/cryptomancien/simple-trading-bot-v2
-cd simple-trading-bot-v2
+git clone https://github.com/Cryptomancien/bot-spot-v2.git
+cd bot-spot-v2.git
 bun install
 cp .env.example .env
 ```
