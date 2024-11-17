@@ -6,7 +6,7 @@
 
 <ul>
     <li><a href="https://git-scm.com" target="_blank">Git</a></li>
-    <li><a href="https://bun.sh]" target="_blank">Bun</a></li>
+    <li><a href="https://bun.sh" target="_blank">Bun</a></li>
     <li><a href="https://code.visualstudio.com" target="_blank">VSC</a></li>
     <li><a href="https://cmder.app" target="_blank">Cmder</a> if you use Windows</li>
 </ul>
@@ -22,7 +22,7 @@ cp .env.example .env
 
 ## Config
 
-- Create an account on XeggeX
+- Create an account on <a href="https://xeggex.com?ref=63becde7b77440cd1b35f620">XeggeX</a>
 - Enable 2FA
 - Create API key
 - Fill USDT
