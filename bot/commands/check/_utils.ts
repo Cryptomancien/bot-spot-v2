@@ -99,7 +99,7 @@ export async function checkUpdateAvailable() {
 
     if (onlineVersion > localVersion) {
         console.log(styleText('cyan', '\nUpdate available'));
-        console.log('git pull');
+        console.log('git pull --rebase');
         console.log('bun update')
     } else {
         console.log(styleText('green', '✅  Project updated'));
