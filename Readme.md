@@ -30,9 +30,18 @@ cp .env.example .env
 
 ## Launch
 
+Check the setup
+``` bash
+bun run main.ts -c
+```
+Complete your keys in .env  
+Then fill your USDT balance.  
+Next run the bot.
+
 ``` bash
 bun run main.ts
 ```
+
 
 A menu will appear
 ```
