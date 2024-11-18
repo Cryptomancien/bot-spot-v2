@@ -48,7 +48,7 @@ A menu will appear
 Simple Trading Bot v2
 --check      -c    Check config
 --new        -n    Start new cycle
---update     -n    Update running cycles
+--update     -u    Update running cycles
 --server     -s    Run server
 ```
 

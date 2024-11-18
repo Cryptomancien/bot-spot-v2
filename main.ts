@@ -7,7 +7,7 @@ function menu() {
     console.log('\nSimple Trading Bot v2 \n');
     console.log('--check      -c    Check config \n');
     console.log('--new        -n    Start new cycle \n');
-    console.log('--update     -n    Update running cycles \n');
+    console.log('--update     -u    Update running cycles \n');
     console.log('--server     -s    Run server \n');
     process.exit();
 }
