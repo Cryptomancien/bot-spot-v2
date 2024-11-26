@@ -2,7 +2,9 @@ import type { CycleType } from '../types';
 import { Status } from '../types';
 import db from '../services/db';
 
-export function insert(cycle: CycleType) {
+type CycleInsertType = Pick<CycleType, 'quantity' | 'order_buy_price' | 'order_buy_id' | 'order_sell_price'>;
+
+export function insert(cycle: CycleInsertType) {
   const { quantity, order_buy_price, order_buy_id, order_sell_price } = cycle;
 
   const query = `INSERT INTO cycles 
