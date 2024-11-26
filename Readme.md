@@ -1,6 +1,6 @@
 # Simple Trading Bot V2
 
-![alt text](https://pbs.twimg.com/media/GYvhSB1WcAA1Z61?format=png&name=medium "Title")
+![alt text](https://pbs.twimg.com/media/GYvhSB1WcAA1Z61?format=png&name=medium 'Title')
 
 ## Required
 
@@ -13,7 +13,7 @@
 
 ## Install
 
-``` bash
+```bash
 git clone https://github.com/Cryptomancien/bot-spot-v2.git
 cd bot-spot-v2
 bun install
@@ -31,19 +31,21 @@ cp .env.example .env
 ## Launch
 
 Check the setup
-``` bash
+
+```bash
 bun run main.ts -c
 ```
+
 Complete your keys in .env  
 Then fill your USDT balance.  
 Next run the bot.
 
-``` bash
+```bash
 bun run main.ts
 ```
 
-
 A menu will appear
+
 ```
 Simple Trading Bot v2
 --check      -c    Check config
@@ -53,9 +55,11 @@ Simple Trading Bot v2
 ```
 
 Then check the setup.
-``` bash
+
+```bash
 bun run main.ts -c
 ```
+
 ```
 ✅  .env ok
 ✅  API_PUBLIC ok
@@ -70,12 +74,14 @@ You can run a new cycle or update not completed ones
 ```
 
 Once it's done, you have 2 commands to run every day (or every week or what ever)
-``` bash
+
+```bash
 bun run main.ts -n
 ```
 
 Once it's done, you can update uncompleted ones.
-``` bash
+
+```bash
 bun run main.ts -u
 ```
 
@@ -89,7 +95,8 @@ Buy order xxx still active
 ```
 
 If you used the v1, do this:
-``` bash
+
+```bash
 bun run scripts/migrate-v1-to-v2.ts
 ```
 
