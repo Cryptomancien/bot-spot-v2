@@ -47,9 +47,11 @@ app.get('/', async (request, response) => {
 });
 
 export default function () {
-  app.listen(8080, () => {
+  const port = process.env.PORT || 8080;
+
+  app.listen(port, () => {
     console.log(styleText('green', '\nStarting local server'));
-    console.log('http://localhost:8080 \n');
+    console.log(`http://localhost:${port} \n`);
     console.log('Ctrl + c to exit');
   });
 }
