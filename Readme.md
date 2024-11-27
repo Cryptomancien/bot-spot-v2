@@ -88,6 +88,12 @@ Buy order xxx still active
 Buy order xxx still active
 ```
 
+Run the server
+``` bash
+bun run main.ts -s
+```
+
+
 If you used the v1, do this:
 ``` bash
 bun run scripts/migrate-v1-to-v2.ts

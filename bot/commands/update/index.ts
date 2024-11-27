@@ -1,6 +1,7 @@
 import * as Exchange from '../../services/exchange';
 import * as Cycle from '../../database/cycle';
 import {type CycleType, type OrderType, Status} from '../../types';
+import {styleText} from 'node:util';
 
 export default async function () {
     const lastPrice = (await Exchange.getLastPrice()).lastPriceNumber as number;
@@ -17,7 +18,7 @@ export default async function () {
                 console.log(`Buy order ${order_buy_id} still active`);
 
             } else {
-                console.log(`Buy order ${order_buy_id} filled`);
+                console.log(styleText('green', `Buy order ${order_buy_id} filled`));
 
                 console.log(`Start updating cycle ${cycle.id}`);
 
@@ -60,7 +61,7 @@ export default async function () {
                     Status.COMPLETED
                 );
 
-                console.log(`Cycle ${cycleId} successfully completed`);
+                console.log(styleText('green', `Cycle ${cycleId} successfully completed`));
             }
         }
     }

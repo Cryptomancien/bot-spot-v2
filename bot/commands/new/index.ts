@@ -1,6 +1,7 @@
 import * as Exchange from '../../services/exchange';
 import {getAmountPlayable} from './_utils.ts';
-import * as Cycle from '../../database/cycle'
+import * as Cycle from '../../database/cycle';
+import {styleText} from 'node:util';
 
 
 export default async function () {
@@ -52,7 +53,7 @@ export default async function () {
         order_buy_id: order.id,
         order_sell_price: priceOutput
     });
-    console.log(`ℹ️ Cycle successfully inserted in database`);
+    console.log(styleText('green', 'Cycle successfully inserted in database'));
 
     process.exit();
 }
