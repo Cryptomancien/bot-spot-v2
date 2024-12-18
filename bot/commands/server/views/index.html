@@ -52,6 +52,7 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>
                             <div>Status</div>
                             <small> {{ completedCycles.length }} / {{ cycles.length }}</small>
@@ -67,6 +68,7 @@
                 <tbody>
                     {% for cycle in cycles %}
                         <tr>
+                            <td>{{ cycle.id }}</td>
                             <td class="{{ cycle.status }} ">{{ cycle.status }}</td>
                             <td>{{ cycle.quantity }}</td>
                             <td>{{ cycle.order_buy_price }}</td>

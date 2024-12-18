@@ -48,6 +48,11 @@ export function updateOrderSellId(id: number, orderSellId: string) {
     db.prepare(query).run();
 }
 
+export function deleteCycleById(id: number) {
+    const query = `DELETE FROM cycles WHERE id = ${id}`;
+    return db.prepare(query).run();
+}
+
 export function list() {
     return db.query('SELECT * FROM cycles ORDER BY id DESC').all();
 }

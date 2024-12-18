@@ -59,3 +59,19 @@ export async function getOrder(orderId: string) {
         return Error( (error as Error).message);
     }
 }
+
+export async function cancelOrder(orderId: string) {
+    try {
+        const url = `${baseURL}/${'cancel order'.replaceAll(' ', '')}`;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+                id: orderId,
+            })
+        })
+        return await response.json();
+    } catch (error) {
+        return Error( (error as Error).message);
+    }
+}
