@@ -1,8 +1,8 @@
-import {styleText} from 'node:util';
+import { styleText } from 'node:util';
 import express from 'express';
 import nunjucks from 'nunjucks';
 import * as Cycle from '../../database/cycle';
-import type {CycleType} from "../../types.ts";
+import type { CycleType } from "../../types.ts";
 
 const app = express();
 
@@ -22,8 +22,8 @@ app.get('/', async (request, response) => {
     const completedCycles = Cycle.listCompleted() as Array<CycleType>;
 
     for (const cycle of completedCycles) {
-        const buy = cycle.order_buy_price * cycle.quantity;
-        const sell = cycle.order_sell_price * cycle.quantity;
+        const buy = cycle.order_buy_price! * cycle.quantity!;
+        const sell = cycle.order_sell_price! * cycle.quantity!;
 
         buyTotal += buy;
         sellTotal += sell;

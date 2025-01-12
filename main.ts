@@ -3,6 +3,7 @@ import server from './bot/commands/server'
 import startNewCycle from './bot/commands/new';
 import update from './bot/commands/update';
 import cancel from './bot/commands/cancel';
+import test from './bot/commands/test';
 
 function menu() {
     console.log('\nSimple Trading Bot v2 \n');
@@ -11,6 +12,7 @@ function menu() {
     console.log('--update         -u        Update running cycles \n');
     console.log('--cancel=:id     -cc=:id   Cancel cycle by id \n');
     console.log('--server         -s        Run server \n');
+    console.log('--test           -t        Test exchange integration (create then cancel order)\n')
     process.exit();
 }
 
@@ -39,6 +41,10 @@ switch (lastArg) {
     case '-s':
     case '--server':
         server();
+        break;
+    case '-t':
+    case '--test':
+        test()
         break;
     default:
         menu();

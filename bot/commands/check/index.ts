@@ -1,6 +1,5 @@
 import { styleText } from 'node:util';
-
-import {checkBalanceUSDT, checkDB, checkDotenv, checkKeys, checkUpdateAvailable} from './_utils';
+import { checkBalanceUSDT, checkDB, checkDotenv, checkKeys, checkUpdateAvailable } from './_utils';
 
 export default async function () {
     await checkDotenv();
