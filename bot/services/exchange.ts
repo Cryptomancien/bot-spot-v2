@@ -85,3 +85,16 @@ export async function cancelOrder(orderId: string) {
         return Error( (error as Error).message);
     }
 }
+
+export async function getTrades() {
+    try {
+        const url = `${baseURL}/${'get orders'.replaceAll(' ', '')}`;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers,
+        });
+        return await response.json();
+    } catch (error) {
+        return Error( (error as Error).message);
+    }
+}
