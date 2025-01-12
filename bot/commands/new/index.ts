@@ -1,53 +1,53 @@
-import * as Exchange from '../../services/exchange';
-import {getAmountPlayable} from './_utils.ts';
+import { Exchange } from '../../services/exchange';
 import * as Cycle from '../../database/cycle';
-import {styleText} from 'node:util';
-import {checkConnection} from "../../services/exchange";
+import { styleText } from 'node:util';
+import { computePrices, getAmountPlayable } from '../../services/core';
+import { type Order } from '../../types';
 
 
 export default async function () {
-    const isConnected = await checkConnection();
-    if ( ! isConnected ) {
+    const isConnected = await Exchange.checkConnection();
+    if (isConnected instanceof Error || !isConnected) {
         console.error('No connection found.');
-        process.exit(1);
+        process.exit(1);  
     }
 
-    const lastPrice = (await Exchange.getLastPrice()).lastPriceNumber;
+    const lastPriceResponse = await Exchange.getLastPrice();
+    if (lastPriceResponse instanceof Error) {
+        console.error(lastPriceResponse as Error);
+        process.exit(1);
+    }
+    const lastPrice = lastPriceResponse.lastPriceNumber;
     console.log(`ℹ️ Last price = ${lastPrice}`);
 
-    let buyOffset: string | number = String(process.env.BUY_OFFSET);
-    buyOffset = parseInt(buyOffset);
-    buyOffset = Math.abs(buyOffset);
-
-    let sellOffset: string | number = String(process.env.SELL_OFFSET);
-    sellOffset = parseInt(sellOffset);
-    sellOffset = Math.abs(sellOffset);
-
-    const priceInput = lastPrice - buyOffset;
-    const priceOutput = lastPrice + sellOffset;
-
+    const [ priceInput, priceOutput ] = computePrices(lastPrice);
     console.log(`ℹ️ Price input = ${priceInput}`);
     console.log(`ℹ️ Price output = ${priceOutput}`);
 
-    const amountPlayableUSDT = await getAmountPlayable();
+    const balances = await Exchange.getBalances();
+    if (balances instanceof Error) {
+        console.error(balances as Error);
+        process.exit(1);
+    }
+
+    const amountPlayableUSDT = getAmountPlayable(balances);
     console.log(`ℹ️ Amount playable in USD = ${amountPlayableUSDT}`);
 
-    let amountPlayableBTC: Number | String = (parseFloat(amountPlayableUSDT) / priceInput).toFixed(6);
-    amountPlayableBTC = String(amountPlayableBTC);
-    console.log(`ℹ️ Amount playable in BTC = ${amountPlayableBTC}`);
+    let amountPlayable = (amountPlayableUSDT / priceInput).toFixed(8);
+    console.log(`ℹ️ Amount playable = ${amountPlayable}`);
 
     // create order in exchange
     const order = await Exchange.createOrder({
-        symbol: 'BTC_USDT',
+        symbol: Exchange.getTicker(),
         side: 'buy',
         price: String(priceInput),
-        quantity: String(amountPlayableBTC),
+        quantity: String(amountPlayable),
     });
 
     if (order.hasOwnProperty('error')) {
-        console.log('error !');
-        console.log(order);
-        process.exit();
+        console.error('error !');
+        console.error(order);
+        process.exit(1);
     }
 
     console.log(order)
@@ -55,9 +55,9 @@ export default async function () {
 
     // insert in db
     const cycleID = Cycle.insert({
-        quantity: parseFloat(amountPlayableBTC.toString()),
+        quantity: parseFloat(amountPlayable),
         order_buy_price: priceInput,
-        order_buy_id: order.id,
+        order_buy_id: (order as Order).id,
         order_sell_price: priceOutput
     });
     console.log(styleText('green', 'Cycle successfully inserted in database'));

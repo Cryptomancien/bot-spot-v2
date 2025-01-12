@@ -1,8 +1,8 @@
 export enum Status {
-    ORDER_BUY_PLACED = 'order_buy_placed',
-    ORDER_BUY_FILLED = 'order_buy_filled',
+    ORDER_BUY_PLACED  = 'order_buy_placed',
+    ORDER_BUY_FILLED  = 'order_buy_filled',
     ORDER_SELL_PLACED = 'order_sell_placed',
-    COMPLETED = 'completed'
+    COMPLETED         = 'completed'
 }
 
 export type CycleType = {
@@ -15,12 +15,36 @@ export type CycleType = {
     order_sell_id?: string;
 };
 
-
 export type OrderType = {
-    id?: string;
-    symbol: 'BTC_USDT';
+    symbol: string;
     side: 'buy' | 'sell';
     price: string;
     quantity: string;
-    isActive?: boolean
+};
+
+// Types returned by exchanges, technically, exchanges returns lots of other data
+export type LastPrice = {
+    lastPriceNumber: number;
+};
+
+export type Asset = {
+    asset: string;
+    available: string;
+};
+
+export type Balances = Array<
+    {
+        asset: string;
+        available: string;
+    }
+>;
+
+export type Order = {
+    id: string;
+    isActive?: boolean;
+};
+
+export type OrderError = {
+    code: number;
+    error: string;
 }

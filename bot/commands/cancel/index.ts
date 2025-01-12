@@ -1,9 +1,9 @@
 import * as Cycle from '../../database/cycle';
-import * as Exchange from '../../services/exchange'
+import { Exchange } from '../../services/exchange'
 
 export default async function () {
     const lastArg = process.argv.at(-1);
-    if ( ! lastArg?.includes('=') ) {
+    if (!lastArg?.includes('=')) {
         throw new Error('id not found');
     }
 
@@ -14,7 +14,7 @@ export default async function () {
     const cycle = Cycle.getById(Number(cycleId));
 
     // @ts-ignore
-    const {order_buy_id} = cycle;
+    const { order_buy_id } = cycle;
 
     const response = await Exchange.cancelOrder(order_buy_id);
     console.log(response);

@@ -1,34 +1,45 @@
 import fs from 'fs/promises';
-import {styleText} from 'node:util';
-import {Database} from 'bun:sqlite';
-import * as Exchange from '../../services/exchange';
+import { styleText } from 'node:util';
+import { Exchange } from '../../services/exchange';
 import db from '../../services/db'
 
 export async function checkDotenv() {
     const dotenvFileExists = await fs.exists('.env');
-    if ( ! dotenvFileExists) {
-        console.log(styleText('red', '.env not found'));
-        console.log(styleText('cyan', 'Copy/paste .env.example -> .env'))
-        process.exit();
+    if (!dotenvFileExists) {
+        console.error(styleText('red', '.env not found'));
+        console.error(styleText('cyan', 'Copy/paste .env.example -> .env'))
+        process.exit(1);
     }
     console.log(styleText('green', '✅  .env ok'));
 }
 
 export async function checkKeys() {
-    if ( ! process.env.API_PUBLIC) {
-        console.log(styleText('red', 'API_PUBLIC not found'));
-        process.exit();
-    }
-    console.log(styleText('green', '✅  API_PUBLIC ok'));
+    if (process.env.EXCHANGE === 'MEXC') {
+        if (!process.env.MEXC_API_KEY) {
+            console.error(styleText('red', 'MEXC_API_KEY not found'));
+            process.exit(1);
+        }
+        console.log(styleText('green', '✅  MEXC_API_KEY ok'));
 
-    if ( ! process.env.API_SECRET) {
-        console.log(styleText('red', 'API_SECRET not found'));
-        process.exit();
+        if (!process.env.MEXC_SECRET) {
+            console.error(styleText('red', 'MEXC_SECRET not found'));
+            process.exit(1);
+        }
+        console.log(styleText('green', '✅  MEXC_SECRET ok')); 
+    } else {
+        if (!process.env.API_PUBLIC) {
+            console.error(styleText('red', 'API_PUBLIC not found'));
+            process.exit(1);
+        }
+        console.log(styleText('green', '✅  API_PUBLIC ok'));
+
+        if (!process.env.API_SECRET) {
+            console.error(styleText('red', 'API_SECRET not found'));
+            process.exit(1);
+        }
+        console.log(styleText('green', '✅  API_SECRET ok'));3
     }
-    console.log(styleText('green', '✅  API_SECRET ok'));
 }
-
-
 
 export async function checkDB() {
     function addColumnIfNotExists(tableName: string, columnName: string, columnDefinition: string) {
@@ -62,9 +73,9 @@ export async function checkBalanceUSDT() {
     const balances = await Exchange.getBalances() as Array<any> | Error
 
     if ( balances instanceof Error) {
-        console.log(styleText('red', 'Error get balances'));
-        console.log(styleText('cyan', 'Check keys in .env'));
-        process.exit();
+        console.error(styleText('red', 'Error get balances'));
+        console.error(styleText('cyan', 'Check keys in .env'));
+        process.exit(1);
     }
 
     console.log(styleText('green', '✅  keys ok'));
@@ -72,10 +83,10 @@ export async function checkBalanceUSDT() {
     const balanceUSDT = balances.find(asset => asset.asset === 'USDT')
     const availableUSDT = parseFloat(balanceUSDT.available)
 
-    if ( ! availableUSDT) {
-        console.log(styleText('red', 'Balance USDT empty'));
-        console.log(styleText('cyan', 'Fill your USDT address on the exchange'));
-        process.exit();
+    if (!availableUSDT) {
+        console.error(styleText('red', 'Balance USDT empty'));
+        console.error(styleText('cyan', 'Fill your USDT address on the exchange'));
+        process.exit(1);
     }
 
     console.log(styleText('green', '✅  USDT wallet ok'));

@@ -1,6 +1,6 @@
-import {expect, test} from 'bun:test'
+import { expect, test } from 'bun:test'
 import * as Cycle from './cycle'
-import {type CycleType, Status} from '../types';
+import { type CycleType, Status } from '../types';
 
 test.skip('list all cycles', () => {
     const cycles = Cycle.list()

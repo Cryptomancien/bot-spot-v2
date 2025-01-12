@@ -1,5 +1,5 @@
-import type {CycleType} from '../types';
-import {Status} from '../types'
+import type { CycleType } from '../types';
+import { Status } from '../types'
 import db from '../services/db'
 
 export function insert(cycle: CycleType) {

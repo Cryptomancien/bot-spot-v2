@@ -1,4 +1,4 @@
-import {Database} from 'bun:sqlite';
+import { Database } from 'bun:sqlite';
 import path from 'node:path';
 import fs from 'fs/promises';
 
