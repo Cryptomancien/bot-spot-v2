@@ -2,9 +2,16 @@ import * as Exchange from '../../services/exchange';
 import {getAmountPlayable} from './_utils.ts';
 import * as Cycle from '../../database/cycle';
 import {styleText} from 'node:util';
+import {checkConnection} from "../../services/exchange";
 
 
 export default async function () {
+    const isConnected = await checkConnection();
+    if ( ! isConnected ) {
+        console.error('No connection found.');
+        process.exit(1);
+    }
+
     const lastPrice = (await Exchange.getLastPrice()).lastPriceNumber;
     console.log(`ℹ️ Last price = ${lastPrice}`);
 

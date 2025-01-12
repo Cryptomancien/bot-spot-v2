@@ -17,6 +17,16 @@ export async function getLastPrice() {
     }
 }
 
+export async function checkConnection() {
+    try {
+        const url = `${baseURL}/market/${'get by symbol'.replaceAll(' ', '')}/BTC_USDT`;
+        const response = await fetch(url);
+        return response.ok
+    } catch (error) {
+        return Error( (error as Error).message);
+    }
+}
+
 export async function getBalances() {
     try {
         const url = `${baseURL}/balances`;

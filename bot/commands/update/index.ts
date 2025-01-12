@@ -2,8 +2,15 @@ import * as Exchange from '../../services/exchange';
 import * as Cycle from '../../database/cycle';
 import {type CycleType, type OrderType, Status} from '../../types';
 import {styleText} from 'node:util';
+import {checkConnection} from "../../services/exchange";
 
 export default async function () {
+    const isConnected = await checkConnection();
+    if ( ! isConnected ) {
+        console.error('No connection found.');
+        process.exit(1);
+    }
+
     const lastPrice = (await Exchange.getLastPrice()).lastPriceNumber as number;
 
     const uncompletedCycles = Cycle.listUncompleted() as Array<CycleType>
