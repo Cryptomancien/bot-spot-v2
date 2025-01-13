@@ -109,7 +109,7 @@ export async function getOrder(orderId: string): Promise<Order | OrderError | Er
         const url = makeSignedUrl('/api/v3/order', parameters);
         const response = await fetch(url, { headers: headers as HeadersInit });
         
-        let data: { code?: number; msg?: string; orderId?: string; isWorking?: string } = await response.json();
+        let data: { code?: number; msg?: string; orderId?: string; status?: string } = await response.json();
 
         // Handle error
         if (data.hasOwnProperty("code") && data.hasOwnProperty("msg")) {
@@ -119,7 +119,7 @@ export async function getOrder(orderId: string): Promise<Order | OrderError | Er
             } as OrderError;
         }
 
-        return { ...data, id: data.orderId, isActive: data.isWorking } as Order;
+        return { ...data, id: data.orderId, isActive: data.status !== "FILLED" } as Order;
     } catch (error) {
         return Error((error as Error).message);
     }
