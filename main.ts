@@ -4,6 +4,9 @@ import startNewCycle from './bot/commands/new';
 import update from './bot/commands/update';
 import cancel from './bot/commands/cancel';
 
+import init from './bot/commands/init';
+await init()
+
 function menu() {
     console.log('\nSimple Trading Bot v2 \n');
     console.log('--check          -c        Check config \n');

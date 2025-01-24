@@ -2,6 +2,13 @@
   "name": "simple-trading-bot-v2",
   "version": "1.02",
   "module": "main.ts",
+  "scripts": {
+    "compile:win": "bun build --compile --minify --target=bun-windows-x64 main.ts --outfile dist/bot-win.exe",
+    "compile:mac-x64": "bun build --compile --minify --target=bun-darwin-x64 main.ts --outfile dist/bot-darwin-x64.app",
+    "compile:mac-arm64": "bun build --compile --minify --target=bun-darwin-arm64 main.ts --outfile dist/bot-darwin-arm64.app",
+    "compile:linux": "bun build --compile --minify --target=bun-linux-x64 main.ts --outfile dist/bot-linux.app",
+    "compile:all": "bun compile:win && bun compile:mac-x64 && bun compile:mac-arm64 && bun compile:linux"
+  },
   "devDependencies": {
     "@types/bun": "^1.1.13",
     "chokidar": "^4.0.1"
