@@ -8,7 +8,7 @@ import init from './bot/commands/init';
 await init()
 
 function menu() {
-    console.log('\nSimple Trading Bot v2 \n');
+    console.log('\nSimple Trading Bot v2 - version 2.1.0\n');
     console.log('--check          -c        Check config \n');
     console.log('--new            -n        Start new cycle \n');
     console.log('--update         -u        Update running cycles \n');
