@@ -60,7 +60,7 @@ export default async function () {
             }
         } else if (status === Status.ORDER_SELL_PLACED) {
             const order = await Exchange.getOrder(order_sell_id as string)
-            if (order.isActive) {
+            if (order.status === 'Active') {
                 console.log(`Sell order ${order_sell_id} still active`);
             } else if (order.status === 'Filled') {
                 Cycle.updateStatus(
