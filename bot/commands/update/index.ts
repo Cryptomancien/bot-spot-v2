@@ -21,10 +21,10 @@ export default async function () {
         if (status === Status.ORDER_BUY_PLACED) {
             const order = await Exchange.getOrder(order_buy_id as string)
 
-            if (order.isActive) {
+            if (order.status === 'Active') {
                 console.log(`Buy order ${order_buy_id} still active`);
 
-            } else {
+            } else if (order.status === 'Filled') {
                 console.log(styleText('green', `Buy order ${order_buy_id} filled`));
 
                 console.log(`Start updating cycle ${cycle.id}`);
